@@ -1,25 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Holds all DA_* fields for LWCs and Dynamic Form -->
 <FieldSet xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>DonorAtlasFields</fullName>
-    <label>DonorAtlas Fields</label>
-    <description>Fields populated by DonorAtlas enrichment.</description>
+    <label>DonorAtlas Enrichment</label>
+
     <availableFields>
-        <field>Age__c</field>
         <field>Religion__c</field>
-        <field>Bio__c</field>
-        <field>NetWorthMin__c</field>
-        <field>NetWorthMax__c</field>
-        <field>PredictedAnnualGiving__c</field>
-        <field>Donations__c</field>
     </availableFields>
+
     <displayedFields>
-        <field>Age__c</field>
-        <field>Religion__c</field>
-        <field>Bio__c</field>
-        <field>NetWorthMin__c</field>
-        <field>NetWorthMax__c</field>
-        <field>PredictedAnnualGiving__c</field>
-        <field>Donations__c</field>
+        <field>Age__c</field><isRequired>false</isRequired>
+    </displayedFields>
+    <displayedFields>
+        <field>Bio__c</field><isRequired>false</isRequired>
+    </displayedFields>
+    <displayedFields>
+        <field>NetWorthMin__c</field><isRequired>false</isRequired>
+    </displayedFields>
+    <displayedFields>
+        <field>NetWorthMax__c</field><isRequired>false</isRequired>
+    </displayedFields>
+    <displayedFields>
+        <field>PredictedAnnualGiving__c</field><isRequired>false</isRequired>
+    </displayedFields>
+    <displayedFields>
+        <field>Donations__c</field><isRequired>false</isRequired>
     </displayedFields>
 </FieldSet>
