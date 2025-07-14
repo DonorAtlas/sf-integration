@@ -1,0 +1,13 @@
+<AuthProvider xmlns="http://soap.sforce.com/2006/04/metadata">
+    <providerType>OpenIdConnect</providerType>
+    <friendlyName>Auth0</friendlyName>
+
+    <consumerKey>6HMwBvxMnisHqRXZkoVS4sJev3OPRRvl</consumerKey>
+    <consumerSecret></consumerSecret>
+
+    <authorizeUrl>https://dev-mopfy28gpj8ozd4d.us.auth0.com/authorize</authorizeUrl>
+    <tokenUrl>https://dev-mopfy28gpj8ozd4d.us.auth0.com/oauth/token</tokenUrl>
+    <userInfoUrl>https://dev-mopfy28gpj8ozd4d.us.auth0.com/userinfo</userInfoUrl>
+    <idTokenIssuer>https://dev-mopfy28gpj8ozd4d.us.auth0.com/</idTokenIssuer>
+    <defaultScopes>openid profile email</defaultScopes>
+</AuthProvider>

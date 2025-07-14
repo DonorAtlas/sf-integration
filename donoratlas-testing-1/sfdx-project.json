@@ -1,0 +1,20 @@
+{
+  "packageDirectories": [
+    {
+      "versionName": "ver 0.1",
+      "versionNumber": "0.1.0.NEXT",
+      "path": "force-app",
+      "default": true,
+      "package": "DonorAtlas Testing 1 Package",
+      "versionDescription": ""
+    }
+  ],
+  "name": "donoratlas-testing-1",
+  "namespace": "datesting1",
+  "sfdcLoginUrl": "https://login.salesforce.com",
+  "sourceApiVersion": "64.0",
+  "packageAliases": {
+    "DonorAtlas Testing 1": "0Hoam0000002Or3CAE",
+    "DonorAtlas Testing 1 Package": "0Hoam0000002OsfCAE"
+  }
+}

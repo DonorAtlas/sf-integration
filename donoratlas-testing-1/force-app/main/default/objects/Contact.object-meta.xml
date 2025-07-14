@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Has all the custom objects that go onto Contact objects -->
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <!-- Existing Contact metadata omitted for brevity -->
+    <fields>
+        <fullName>Age__c</fullName>
+        <label>Age</label>
+        <type>Number</type>
+        <precision>3</precision>
+        <scale>0</scale>
+    </fields>
+    <fields>
+        <fullName>Religion__c</fullName>
+        <label>Religion</label>
+        <type>Text</type>
+        <length>100</length>
+    </fields>
+    <fields>
+        <fullName>Bio__c</fullName>
+        <label>Bio</label>
+        <type>LongTextArea</type>
+        <visibleLines>5</visibleLines>
+        <length>32768</length>
+    </fields>
+    <fields>
+        <fullName>NetWorthMin__c</fullName>
+        <label>Net Worth (Min)</label>
+        <type>Currency</type>
+        <precision>18</precision>
+        <scale>2</scale>
+    </fields>
+    <fields>
+        <fullName>NetWorthMax__c</fullName>
+        <label>Net Worth (Max)</label>
+        <type>Currency</type>
+        <precision>18</precision>
+        <scale>2</scale>
+    </fields>
+    <fields>
+        <fullName>PredictedAnnualGiving__c</fullName>
+        <label>Predicted Annual Giving</label>
+        <type>Currency</type>
+        <precision>18</precision>
+        <scale>2</scale>
+    </fields>
+    <fields>
+        <fullName>Donations__c</fullName>
+        <label>Donations (JSON)</label>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+        <length>131072</length>
+    </fields>
+</CustomObject>
