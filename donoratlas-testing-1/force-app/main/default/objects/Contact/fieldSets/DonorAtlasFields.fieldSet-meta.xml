@@ -2,6 +2,7 @@
 <FieldSet xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>DonorAtlasFields</fullName>
     <label>DonorAtlas Enrichment</label>
+    <description>Fields from DonorAtlas enrichment</description>
 
     <availableFields>
         <field>Religion__c</field>
