@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <QuickAction xmlns="http://soap.sforce.com/2006/04/metadata">
     <label>Enrich With DonorAtlas</label>
-    <description>Headless LWC quick action that queues DonorAtlas enrichment.</description>
-    <actionSubtype>Action</actionSubtype>
-    <lightningWebComponent>enhanceContact</lightningWebComponent>
     <optionsCreateFeedItem>false</optionsCreateFeedItem>
-    <type>LightningWebComponent</type>
+    <description>Request DonorAtlas enrichment</description>
+    <lightningComponent>enhanceContact</lightningComponent>
+    <type>LightningComponent</type>
+    <targetObject>Contact</targetObject>
 </QuickAction>

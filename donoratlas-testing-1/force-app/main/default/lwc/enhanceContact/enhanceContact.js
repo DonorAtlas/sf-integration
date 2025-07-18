@@ -1,34 +1,29 @@
-import { LightningElement, api } from 'lwc';
-import startSingle from '@salesforce/apex/DonorAtlasService.startSingle';
-import { ShowToastEvent } from 'lightning/platformShowToastEvent';
-import { CloseActionScreenEvent } from 'lightning/actions';
+import { LightningElement, api, wire } from 'lwc';
+import enhanceContact from '@salesforce/apex/DonorAtlasService.enhanceContact';
+import { getRecord, getFieldValue } from 'lightning/uiRecordApi';
+import ENHANCED_FIELD from '@salesforce/schema/Contact.DonorAtlasEnhanced__c';
+
+const FIELDS = [ENHANCED_FIELD];
 
 export default class EnhanceContact extends LightningElement {
     @api recordId;
+    isEnhanced;
 
-    /** Called automatically for headless quick-actions */
-    @api invoke() {
-        startSingle({ contactId: this.recordId })
+    @wire(getRecord, { recordId: '$recordId', fields: FIELDS })
+    wiredContact({ data }) {
+        if (data) {
+            this.isEnhanced = getFieldValue(data, ENHANCED_FIELD);
+        }
+    }
+
+    handleEnhance() {
+        enhanceContact({ contactId: this.recordId })
             .then(() => {
-                this.dispatchEvent(
-                    new ShowToastEvent({
-                        title: 'DonorAtlas',
-                        message: 'Enrichment job queued',
-                        variant: 'success'
-                    })
-                );
-                this.dispatchEvent(new CloseActionScreenEvent());
+                this.isEnhanced = true;
             })
-            .catch(err => {
-                this.dispatchEvent(
-                    new ShowToastEvent({
-                        title: 'Error',
-                        message:
-                            err && err.body ? err.body.message : err.message,
-                        variant: 'error'
-                    })
-                );
-                this.dispatchEvent(new CloseActionScreenEvent());
+            .catch(error => {
+                // surface error to user if desired
+                console.error(error);
             });
     }
 }

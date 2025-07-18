@@ -1,33 +1,36 @@
-global class DonorAtlasQueueable implements Queueable, Database.AllowsCallouts {
-    private final List<Id> contactIds;
-    private static final String NC = 'DonorAtlas';
+public with sharing class DonorAtlasQueueable
+        implements Queueable, Database.AllowsCallouts {
 
-    public DonorAtlasQueueable(List<Id> ids) {
-        contactIds = ids;
-    }
+    private Id contactId;
+    public DonorAtlasQueueable(Id contactId) { this.contactId = contactId; }
 
-    global void execute(QueueableContext qc) {
-        // Get minimal data for each Contact
-        List<Contact> contacts = [
-            SELECT Id, FirstName, LastName, Email
-            FROM Contact
-            WHERE Id IN :contactIds
+    public void execute(QueueableContext qc) {
+        Contact c = [
+            SELECT Id, FirstName, LastName, MailingStreet, MailingCity,
+                   MailingState, MailingPostalCode, MailingCountry, Email
+            FROM Contact WHERE Id = :contactId LIMIT 1
         ];
 
-        // Build one request per Contact (≤10 per transaction to respect limits)
-        for (Contact c : contacts) {
-            HttpRequest req = new HttpRequest();
-            req.setEndpoint('callout:' + NC + '/v1/enrichment/jobs');
-            req.setMethod('POST');
-            req.setHeader('Content-Type', 'application/json');
-            req.setBody(JSON.serialize(new Map<String, Object>{
-                'salesforceId' => c.Id,
-                'payload'      => DonorAtlasMapper.buildRequest(c)
-            }));
-            new Http().send(req);      // governor-safe because we allow callouts
-        }
+        Map<String,Object> payload = new Map<String,Object>{
+            'organizationId' => UserInfo.getOrganizationId(),
+            'contactId'      => c.Id,
+            'firstName'      => c.FirstName,
+            'lastName'       => c.LastName,
+            'street'         => c.MailingStreet,
+            'city'           => c.MailingCity,
+            'state'          => c.MailingState,
+            'postalCode'     => c.MailingPostalCode,
+            'country'        => c.MailingCountry,
+            'email'          => c.Email
+        };
 
-        /* Chain additional jobs if we have more than 10 contacts
-           (omitted for brevity—add paging logic here). */
+        HttpRequest req = new HttpRequest();
+        req.setEndpoint('callout:DonorAtlas/match');
+        req.setMethod('POST');
+        req.setHeader('Content-Type', 'application/json');
+        req.setBody(JSON.serialize(payload));
+
+        HttpResponse res = new Http().send(req);
+        System.debug('DonorAtlas match callout status: ' + res.getStatus());
     }
 }

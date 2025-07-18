@@ -1,1 +1,11 @@
-<template></template>
+<template>
+    <lightning-card title="enhanceContact">
+        <template if:true={isEnhanced}>
+            <p class="slds-p-around_small">This contact is already enhanced.</p>
+        </template>
+        <template if:false={isEnhanced}>
+            <lightning-button label="Enhance with DonorAtlas" variant="brand"
+                onclick={handleEnhance}></lightning-button>
+        </template>
+    </lightning-card>
+</template>

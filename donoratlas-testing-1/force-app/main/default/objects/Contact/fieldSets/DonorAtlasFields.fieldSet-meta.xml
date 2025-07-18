@@ -1,29 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <FieldSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>Fields returned from DonorAtlas enrichment</description>
+    <label>DonorAtlas Fields</label>
     <fullName>DonorAtlasFields</fullName>
-    <label>DonorAtlas Enrichment</label>
-    <description>Fields from DonorAtlas enrichment</description>
-
     <availableFields>
         <field>Religion__c</field>
     </availableFields>
-
     <displayedFields>
-        <field>Age__c</field><isRequired>false</isRequired>
+        <field>Age__c</field>
     </displayedFields>
     <displayedFields>
-        <field>Bio__c</field><isRequired>false</isRequired>
+        <field>Bio__c</field>
     </displayedFields>
     <displayedFields>
-        <field>NetWorthMin__c</field><isRequired>false</isRequired>
+        <field>Donations__c</field>
     </displayedFields>
     <displayedFields>
-        <field>NetWorthMax__c</field><isRequired>false</isRequired>
+        <field>PredictedAnnualGiving__c</field>
     </displayedFields>
     <displayedFields>
-        <field>PredictedAnnualGiving__c</field><isRequired>false</isRequired>
+        <field>NetWorthMin__c</field>
     </displayedFields>
     <displayedFields>
-        <field>Donations__c</field><isRequired>false</isRequired>
+        <field>NetWorthMax__c</field>
     </displayedFields>
 </FieldSet>

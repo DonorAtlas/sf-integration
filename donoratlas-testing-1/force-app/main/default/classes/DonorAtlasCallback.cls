@@ -1,22 +1,32 @@
-@RestResource(urlMapping='/donoratlas/enrichment/*')
+@RestResource(urlMapping='/donoratlas/callback')
 global with sharing class DonorAtlasCallback {
-    /**
-     * DonorAtlas pushes results when a job finishes.
-     * Body example:
-     * {
-     *   "salesforceId" : "003xxxxxxxxxxxx",
-     *   "data" : { "age":55, "capacityScore":85, ... }
-     * }
-     */
+
+    /** Called by DonorAtlas once enrichment is finished. */
     @HttpPost
     global static void receive() {
-        String body = RestContext.request.requestBody.toString();
-        Map<String, Object> wrapper =
-            (Map<String, Object>) JSON.deserializeUntyped(body);
+        RestRequest req = RestContext.request;
+        Map<String,Object> wrapper =
+            (Map<String,Object>)JSON.deserializeUntyped(req.requestBody.toString());
 
-        Id contactId                  = (Id)    wrapper.get('salesforceId');
-        Map<String, Object> enrich    = (Map<String, Object>) wrapper.get('data');
+        Id contactId = (Id)wrapper.get('contactId');
+        Map<String,Object> enrichment = (Map<String,Object>)wrapper.get('enrichment');
 
-        DonorAtlasMapper.apply(contactId, enrich);
+        if (contactId == null || enrichment == null) {
+            RestContext.response.statusCode = 400;
+            return;
+        }
+
+        Contact updateContact = new Contact(Id = contactId);
+        if (enrichment.containsKey('Age'))               updateContact.Age__c               = (Integer)enrichment.get('Age');
+        if (enrichment.containsKey('Bio'))               updateContact.Bio__c               = (String)enrichment.get('Bio');
+        if (enrichment.containsKey('Donations'))         updateContact.Donations__c         = (String)enrichment.get('Donations');
+        if (enrichment.containsKey('NetWorthMin'))       updateContact.NetWorthMin__c       = (Decimal)enrichment.get('NetWorthMin');
+        if (enrichment.containsKey('NetWorthMax'))       updateContact.NetWorthMax__c       = (Decimal)enrichment.get('NetWorthMax');
+        if (enrichment.containsKey('PredictedAnnualGiving'))
+             updateContact.PredictedAnnualGiving__c      = (Decimal)enrichment.get('PredictedAnnualGiving');
+        if (enrichment.containsKey('Religion'))          updateContact.Religion__c          = (String) enrichment.get('Religion');
+        updateContact.DonorAtlasEnhanced__c = true;
+
+        update updateContact;
     }
 }

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ExternalAuthIdentityProvider xmlns="http://soap.sforce.com/2006/04/metadata">
+    <label>Auth0</label>
+    <description>Auth0 Identity Provider</description>
+    <authenticationFlow>AuthorizationCode</authenticationFlow>
+    <authenticationProtocol>OAuth</authenticationProtocol>
+    <externalAuthIdentityProviderParameters>
+        <description>Auth0 Identity Provider Parameter</description>
+        <parameterName>AuthorizeUrl</parameterName>
+        <parameterType>AuthorizeUrl</parameterType>
+        <parameterValue>https://dev-mopfy28gpj8ozd4d.us.auth0.com/authorize</parameterValue>
+    </externalAuthIdentityProviderParameters>
+    <externalAuthIdentityProviderParameters>
+        <description>Auth0 Identity Provider Parameter</description>
+        <parameterName>TokenUrl</parameterName>
+        <parameterType>TokenUrl</parameterType>
+        <parameterValue>https://dev-mopfy28gpj8ozd4d.us.auth0.com/oauth/token</parameterValue>
+    </externalAuthIdentityProviderParameters>
+    <externalAuthIdentityProviderParameters>
+        <description>Auth0 Identity Provider Parameter</description>
+        <parameterName>UserInfoUrl</parameterName>
+        <parameterType>UserInfoUrl</parameterType>
+        <parameterValue>https://dev-mopfy28gpj8ozd4d.us.auth0.com/userinfo</parameterValue>
+    </externalAuthIdentityProviderParameters>
+</ExternalAuthIdentityProvider>
