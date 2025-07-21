@@ -1,8 +1,32 @@
 {
   "orgName": "donoratlas-testing-00000",
-  "edition": "Developer",
+  "edition": "Enterprise",
+  "hasSampleData": true,
   "features": [
-    "EnableSetPasswordInApi"
+    "AccountingSubledgerGrowthEdition",
+    "AccountingSubledgerUser",
+    "AnalyticsQueryService",
+    "Assessments",
+    "Communities",
+    "ContactsToMultipleAccounts",
+    "EnableSetPasswordInApi",
+    "Fundraising",
+    "Grantmaking",
+    "DataProcessingEngine",
+    "DecisionTable",
+    "IndustriesActionPlan",
+    "DocumentChecklist",
+    "IndustriesSalesExcellenceAddOn",
+    "IndustriesServiceExcellenceAddOn",
+    "MarketingUser",
+    "NonprofitCloudCaseManagementUser",
+    "OmniStudioDesigner",
+    "OmniStudioRuntime",
+    "OutcomeManagement",
+    "PersonAccounts",
+    "ProgramManagement",
+    "PublicSectorAccess",
+    "StateAndCountryPicklist"
   ],
   "settings": {
     "lightningExperienceSettings": {
@@ -10,6 +34,30 @@
     },
     "mobileSettings": {
       "enableS1EncryptedStoragePref2": false
+    },
+    "chatterSettings": {
+      "enableChatter": true
+    },
+    "apexSettings": {
+      "enableDisableParallelApexTesting": true
+    },
+    "enhancedNotesSettings": {
+      "enableEnhancedNotes": true
+    },
+    "industriesSettings": {
+      "enableBenefitManagementPreference": true,
+      "enableBenefitAndGoalSharingPref": true,
+      "enableCarePlansPreference": true,
+      "enableGroupMembershipPref": true,
+      "enableGrantmaking": true,
+      "enableOutcomes": true
+    },
+    "nameSettings": {
+      "enableMiddleName": true,
+      "enableNameSuffix": true
+    },
+    "InterestTaggingSettings": {
+      "enableInterestTagging": true
     }
   }
 }
