@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<QuickAction xmlns="https://soap.sforce.com/2006/04/metadata">
+    <label>Enrich With DonorAtlas</label>
+    <optionsCreateFeedItem>false</optionsCreateFeedItem>
+    <description>Request DonorAtlas enrichment</description>
+    <lightningComponent>enhanceContact</lightningComponent>
+    <type>LightningComponent</type>
+    <targetObject>Contact</targetObject>
+</QuickAction>
